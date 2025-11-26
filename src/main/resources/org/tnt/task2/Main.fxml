@@ -7,7 +7,11 @@
 <?import javafx.scene.layout.*?>
 
 
-
+<?import javafx.scene.text.Text?>
 <Group fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnt.task2.MainController">
     <ToggleButton fx:id="toggleBtn" text="Переключатель" onAction="#handleToggle"/>
+    <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+        <Label fx:id="outputText" layoutX="50" layoutY="50"/>
+    </AnchorPane>
+
 </Group>
