@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -18,15 +19,32 @@ public class MainController {
     @FXML
     private ToggleButton toggleBtn;
     @FXML
-    public void handleToggle(ActionEvent event) {
+    private Button button;
+    @FXML
+    public void handleToggle(ActionEvent event) throws InterruptedException {
         if (toggleBtn.isSelected()) {
             audioManager.start();
-            System.out.println("Кнопка зажата");
         } else {
             audioManager.stop();
-            System.out.println("Кнопка отжата");
         }
     }
+
+    @FXML
+    public void language(ActionEvent event) throws InterruptedException {
+        switch (button.getText()) {
+            case "Русский" -> {
+                audioManager.stop();
+                toggleBtn.setSelected(false);
+                audioManager.setLanguage("EN");
+                button.setText("Английский");}
+            case "Английский" -> {
+                audioManager.stop();
+                toggleBtn.setSelected(false);
+                audioManager.setLanguage("RU");
+                button.setText("Русский");}
+        }
+    }
+
 
     @FXML
     public void initialize() {

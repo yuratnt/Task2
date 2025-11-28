@@ -8,10 +8,16 @@
 
 
 <?import javafx.scene.text.Text?>
-<Group fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnt.task2.MainController">
-    <ToggleButton fx:id="toggleBtn" text="Переключатель" onAction="#handleToggle"/>
-    <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-        <Label fx:id="outputText" layoutX="50" layoutY="50"/>
-    </AnchorPane>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnt.task2.MainController"
+      spacing="10" style="-fx-padding: 20;">
 
-</Group>
+    <HBox spacing="10">
+        <ToggleButton fx:id="toggleBtn" text="Переключатель" onAction="#handleToggle" prefWidth="150"/>
+        <Button fx:id="button" text="Русский" onAction="#language" prefWidth="100"/>
+    </HBox>
+
+    <Label fx:id="outputText"
+           style="-fx-font-size: 14; -fx-wrap-text: true;"
+           wrapText="true"/>
+
+</VBox>

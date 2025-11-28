@@ -21,9 +21,6 @@ public class MainApplication extends Application {
         stage.setWidth(300);
         stage.setHeight(250);
         stage.setScene(scene);
-
-
-
         stage.show();
     }
 

@@ -11,17 +11,18 @@ import java.io.IOException;
 
 
 public class AudioManager {
+    private String language = "RU";
 
-
+    Thread thread;
     private boolean status = false;
     private String text;
     private StringBuilder stringBuilder = new StringBuilder();
     public void start() {
-        new Thread(() -> {
+        thread = new Thread(() -> {
             LibVosk.setLogLevel(LogLevel.DEBUG);
             AudioFormat format = new AudioFormat(16000.0f, 16, 1, true, false);
             DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
-            try (Model model = new Model("model/vosk-model-small-ru-0.22");
+            try (Model model = new Model("src/main/resources/model/" + language);
                  Recognizer recognizer = new Recognizer(model, 16000)) {
 
                 TargetDataLine microphone = (TargetDataLine) AudioSystem.getLine(info);
@@ -45,19 +46,25 @@ public class AudioManager {
                         stringBuilder.append(json.getString("text"));
                     }
                 }
+                microphone.stop();
+                microphone.close();
             } catch (LineUnavailableException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }).start();
+        });
+        thread.start();
     }
-
-    public void stop() {
+    public void stop() throws InterruptedException {
         status = false;
     }
 
     public String getText() {
         return stringBuilder.toString();
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
