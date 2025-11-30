@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnt.task2.MainController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <HBox spacing="10">
+        <ToggleButton fx:id="toggleBtn" text="Включить запись" onAction="#handleToggle" prefWidth="150"/>
+        <Button fx:id="button" text="Русский" onAction="#language" prefWidth="100"/>
+    </HBox>
+
+    <Label fx:id="outputText"
+           style="-fx-font-size: 14; -fx-wrap-text: true;"
+           wrapText="true"/>
+
+</VBox>
